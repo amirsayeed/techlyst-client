@@ -43,7 +43,7 @@ const AuthProvider = ({children}) => {
         }
     },[])
 
-    const userInfo = {
+    const authInfo = {
         signUp,
         signIn,
         googleSignIn,
@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext value={userInfo}>
+        <AuthContext value={authInfo}>
             {children}
         </AuthContext>
     );

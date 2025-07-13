@@ -2,15 +2,38 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const {register, handleSubmit, formState: { errors }} = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const {signUp,setUser,updateUser} = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         console.log(data);
+        signUp(data.email,data.password)
+        .then(result=>{
+            const user = result.user;
+            
+            updateUser({ displayName: data.name, photoURL: data.photo })
+            .then(()=>{
+            setUser({...user, displayName: data.name, photoURL: data.photo});
+            toast.success("Registration successful!");
+            navigate('/');
+            })
+            .catch(error=>{
+                toast.error(error);
+                setUser(user);
+            })
+        })
+        .catch(error=>{
+            console.log(error);
+            toast.error(error.message);
+        })
     }
     
     return (
@@ -28,7 +51,9 @@ const Register = () => {
                 }
 
                 <label className="text-sm mt-2">Photo URL</label>
-                <input type="text" name="photo" id="photo" placeholder="Photo URL" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input type="text" 
+                {...register('photo')}
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
 
                 <label className="text-sm mt-2">Email address*</label>
                 <input type="email" 
@@ -69,9 +94,9 @@ const Register = () => {
                 <p className="my-1 text-sm text-center dark:text-gray-600">Already have an account?
                 <Link to='/login' className="hover:underline text-blue-400"> Login</Link>
                 </p>
-    
-                <SocialLogin/>
+                <button type='submit' className="btn btn-primary w-full text-white rounded-md">Register</button>
             </form>
+            <SocialLogin/>
             
         </div>
         </div>

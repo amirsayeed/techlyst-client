@@ -1,14 +1,27 @@
 import React from 'react';
-import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const { signIn, setUser } = useAuth();
+    const navigate = useNavigate();
     const onSubmit = data => {
         console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+            console.log(result.user);
+            setUser(result.user);
+            toast.success('Login successful');
+            navigate('/');
+        })
+        .catch(error => {
+            console.log(error)
+            toast.error(error.message);
+        })
     }
 
     return (
