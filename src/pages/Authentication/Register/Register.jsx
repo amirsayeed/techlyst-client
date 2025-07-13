@@ -98,7 +98,7 @@ const Register = () => {
             </form>
             <SocialLogin/>
             
-        </div>
+            </div>
         </div>
     );
 };

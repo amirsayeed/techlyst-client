@@ -2,16 +2,17 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const SocialLogin = () => {
     const {googleSignIn,setUser} = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
     const handleGoogleLogin = () =>{
         googleSignIn().then(result=>{
             setUser(result.user);
-            navigate('/');
             toast.success('Login successful');
+            navigate(`${location?.state ? location.state : '/'}`);
         })
         .catch(error=>{
             console.log(error);
