@@ -3,12 +3,17 @@ import { useForm } from 'react-hook-form';
 import { WithContext as ReactTags } from 'react-tag-input';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
+import axios from 'axios';
+import useAxios from '../../../hooks/useAxios';
 
 const separators = [',', 'Enter'];
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [tags, setTags] = useState([]);
+  const [productPic, setProductPic] = useState('');
+  const [imageTouched, setImageTouched] = useState(false);
+  const axiosInstance = useAxios();
 
   const {
     register,
@@ -16,6 +21,23 @@ const AddProduct = () => {
     reset,
     formState: { errors }
   } = useForm();
+
+  const handleImageUpload = async (e) => {
+    setImageTouched(true);
+    const image = e.target.files[0];
+    if (!image) return;
+
+    const formData = new FormData();
+    formData.append('image', image);
+
+    try {
+      const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`;
+      const res = await axios.post(imageUploadUrl, formData);
+      setProductPic(res.data.data.url);
+    } catch (err) {
+      console.error('Image upload failed:', err);
+    }
+  };
 
   const handleDelete = (indexToRemove) => {
     const filteredTags = tags.filter((tag, index) => index !== indexToRemove);
@@ -27,26 +49,44 @@ const AddProduct = () => {
     setTags(updatedTags);
   };
 
-  const onSubmit = (data) => {
-    const file = data.productImage[0];
+  const onSubmit = async(data) => {
+    if (!productPic) {
+    setImageTouched(true);
+    return;
+    }
 
     const product = {
-      productName: data.productName,
-      description: data.description,
-      externalLink: data.externalLink || '',
-      ownerName: user.displayName,
-      ownerEmail: user.email,
-      ownerImage: user.photoURL,
-      tags: tags.map(tag => tag.text),
-      productImageFile: file, 
-      createdAt: new Date().toISOString()
+    productName: data.productName,
+    description: data.description,
+    externalLink: data.externalLink || '',
+    ownerName: user.displayName,
+    ownerEmail: user.email,
+    ownerImage: user.photoURL,
+    tags: tags.map(tag => tag.text),
+    productImageUrl: productPic,
+    createdAt: new Date().toISOString()
     };
 
     console.log(product);
 
-    Swal.fire('Success!', 'Product added successfully.', 'success');
-    reset();
-    setTags([]);
+    try {
+      const res = await axiosInstance.post('/products', product);
+      if (res.data.insertedId) {
+        Swal.fire('Success!', 'Product added successfully.', 'success');
+        reset();
+        setTags([]);
+        setProductPic('');
+        setImageTouched(false);
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed!',
+        text: err.response?.data?.error || 'Something went wrong while adding the product.',
+      });
+    }
+
   };
 
   return (
@@ -68,12 +108,14 @@ const AddProduct = () => {
         <div className="form-control mb-4 w-full">
             <label className="label">Product Image<span className="text-red-500 ml-1">*</span></label>
             <input
-            type="file"
-            accept="image/*"
-            {...register('productImage', { required: true })}
-            className="file-input file-input-bordered w-full"
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              className="file-input file-input-bordered w-full"
             />
-            {errors.productImage && <p className="text-error text-sm mt-1">Product image is required</p>}
+            {!productPic && imageTouched && (
+              <p className="text-error text-sm mt-1">Product image is required</p>
+            )}
         </div>
 
         <div className="form-control mb-4 w-full">
