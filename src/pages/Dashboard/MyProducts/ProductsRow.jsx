@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 const ProductsRow = ({ product, handleDelete }) => {
   return (
-    <tr className="hover">
+    <tr>
       <td>{product.productName}</td>
       <td>{product.votes ?? 0}</td>
       <td>

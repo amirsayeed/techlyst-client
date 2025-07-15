@@ -36,7 +36,7 @@ const MyProducts = () => {
       if (result.isConfirmed) {
         try {
           const res = await axiosSecure.delete(`/products/${id}`);
-          if (res.data?.deletedCount > 0) {
+          if (res.data?.deletedCount) {
             Swal.fire('Deleted!', 'Product has been deleted.', 'success');
             refetch();
           }

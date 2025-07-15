@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { WithContext as ReactTags } from 'react-tag-input';
+import ReactTags from '@pathofdev/react-tag-input';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 import useAxios from '../../../hooks/useAxios';
-
-const separators = [',', 'Enter'];
+import '@pathofdev/react-tag-input/build/index.css'; // make sure to import styles
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -39,35 +38,23 @@ const AddProduct = () => {
     }
   };
 
-  const handleDelete = (indexToRemove) => {
-    const filteredTags = tags.filter((tag, index) => index !== indexToRemove);
-    setTags(filteredTags);
-  };
-
-  const handleAddition = (newTag) => {
-    const updatedTags = [...tags, newTag];
-    setTags(updatedTags);
-  };
-
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     if (!productPic) {
-    setImageTouched(true);
-    return;
+      setImageTouched(true);
+      return;
     }
 
     const product = {
-    productName: data.productName,
-    description: data.description,
-    externalLink: data.externalLink || '',
-    ownerName: user.displayName,
-    ownerEmail: user.email,
-    ownerImage: user.photoURL,
-    tags: tags.map(tag => tag.text),
-    productImageUrl: productPic,
-    createdAt: new Date().toISOString()
+      productName: data.productName,
+      description: data.description,
+      externalLink: data.externalLink || '',
+      ownerName: user.displayName,
+      ownerEmail: user.email,
+      ownerImage: user.photoURL,
+      tags: tags,
+      productImageUrl: productPic,
+      createdAt: new Date().toISOString()
     };
-
-    console.log(product);
 
     try {
       const res = await axiosInstance.post('/products', product);
@@ -83,114 +70,125 @@ const AddProduct = () => {
       Swal.fire({
         icon: 'error',
         title: 'Failed!',
-        text: err.response?.data?.error || 'Something went wrong while adding the product.',
+        text: err.response?.data?.error || 'Something went wrong while adding the product.'
       });
     }
-
   };
 
   return (
-    <div className='my-10'>
-        <form onSubmit={handleSubmit(onSubmit)} className="fieldset max-w-3xl mx-auto p-10 bg-base-200 rounded-lg">
+    <div className="my-10">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="fieldset max-w-3xl mx-auto p-10 bg-base-200 rounded-lg"
+      >
         <h2 className="text-3xl font-bold mb-6 text-center">Add a Product</h2>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Product Name<span className="text-red-500 ml-1">*</span></label>
-            <input
+          <label className="label">
+            Product Name<span className="text-red-500 ml-1">*</span>
+          </label>
+          <input
             type="text"
             {...register('productName', { required: true })}
             placeholder="Enter product name"
             className="input input-bordered w-full"
-            />
-            {errors.productName && <p className="text-error text-sm mt-1">Product name is required</p>}
+          />
+          {errors.productName && (
+            <p className="text-error text-sm mt-1">Product name is required</p>
+          )}
         </div>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Product Image<span className="text-red-500 ml-1">*</span></label>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="file-input file-input-bordered w-full"
-            />
-            {!productPic && imageTouched && (
-              <p className="text-error text-sm mt-1">Product image is required</p>
-            )}
+          <label className="label">
+            Product Image<span className="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="file-input file-input-bordered w-full"
+          />
+          {!productPic && imageTouched && (
+            <p className="text-error text-sm mt-1">Product image is required</p>
+          )}
         </div>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Description<span className="text-red-500 ml-1">*</span></label>
-            <textarea
+          <label className="label">
+            Description<span className="text-red-500 ml-1">*</span>
+          </label>
+          <textarea
             {...register('description', { required: true })}
             className="textarea textarea-bordered h-24 w-full"
             placeholder="Product description"
-            />
-            {errors.description && <p className="text-error text-sm mt-1">Description is required</p>}
+          />
+          {errors.description && (
+            <p className="text-error text-sm mt-1">Description is required</p>
+          )}
         </div>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Owner Name</label>
-            <input
+          <label className="label">Owner Name</label>
+          <input
             type="text"
             value={user?.displayName || ''}
             readOnly
             className="input input-bordered w-full bg-base-200"
-            />
+          />
         </div>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Owner Email</label>
-            <input
+          <label className="label">Owner Email</label>
+          <input
             type="email"
             value={user?.email || ''}
             readOnly
             className="input input-bordered w-full bg-base-200"
-            />
+          />
         </div>
 
         <div className="form-control mb-4 w-full">
-            <label className="label">Owner Image URL</label>
-            <input
+          <label className="label">Owner Image URL</label>
+          <input
             type="text"
             value={user?.photoURL || ''}
             readOnly
             className="input input-bordered w-full bg-base-200"
-            />
+          />
         </div>
 
         <div className="form-control mb-6 w-full">
-            <label className="label">Tags</label>
-            <ReactTags
+          <label className="label">Tags</label>
+          <ReactTags
             tags={tags}
-            separators={separators}
-            handleDelete={handleDelete}
-            handleAddition={handleAddition}
-            inputFieldPosition="bottom"
+            onChange={setTags}
             placeholder="Add tags and press Enter"
             classNames={{
-                tags: 'flex flex-wrap gap-3 p-2 bg-base-100 border rounded-md',
-                tagInput: 'w-full',
-                tagInputField: 'input w-full h-8',
-                tag: 'bg-primary text-white px-3 py-1 rounded-md',
-                remove: 'ml-2 cursor-pointer text-sm'
+              tags: 'flex flex-wrap gap-3 p-2 bg-base-100 border rounded-md',
+              tag: 'bg-primary text-white px-3 py-1 rounded-md',
+              tagInput: 'w-full',
+              tagInputField: 'input w-full h-10',
+              remove: 'ml-2 cursor-pointer text-sm'
             }}
-            />
+          />
         </div>
 
         <div className="form-control mb-6 w-full">
-            <label className="label">External Link (Optional)</label>
-            <input
+          <label className="label">External Link (Optional)</label>
+          <input
             type="url"
             {...register('externalLink')}
             placeholder="https://productsite.com"
             className="input input-bordered w-full"
-            />
+          />
         </div>
 
         <div className="text-center">
-            <button type="submit" className="btn btn-primary w-full">Submit Product</button>
+          <button type="submit" className="btn btn-primary w-full">
+            Submit Product
+          </button>
         </div>
-        </form>
+      </form>
     </div>
   );
 };
