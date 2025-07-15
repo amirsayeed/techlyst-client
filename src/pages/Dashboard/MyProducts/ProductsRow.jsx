@@ -4,7 +4,7 @@ const ProductsRow = ({ product, handleDelete }) => {
   return (
     <tr>
       <td>{product.productName}</td>
-      <td>{product.votes ?? 0}</td>
+      <td>{product.votes}</td>
       <td>
         <span className={`badge 
           ${product.status === 'Accepted' ? 'badge-success' :

@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
+
 import { Link, useNavigate } from 'react-router';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
+import useAxios from '../../../hooks/useAxios';
+
 
 const Register = () => {
     const {register, handleSubmit, formState: { errors }} = useForm();
     const [showPassword, setShowPassword] = useState(false);
+    const axiosInstance = useAxios();
     const {signUp,setUser,updateUser} = useAuth();
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
+        //console.log(data);
         signUp(data.email,data.password)
-        .then(result=>{
+        .then(async(result)=>{
             const user = result.user;
             
+            // user update in database
+            const userInfo = {
+                email: data.email,
+                role: 'user', 
+                subscribed: false, 
+                createdAt: new Date().toISOString()
+            };
+
+            const userRes = await axiosInstance.post('/users',userInfo);
+            console.log(userRes.data);
+
+            //user update in firebase
             updateUser({ displayName: data.name, photoURL: data.photo || 'https://img.icons8.com/ios-glyphs/30/user--v1.png' })
             .then(()=>{
             setUser({...user, displayName: data.name, photoURL: data.photo || 'https://img.icons8.com/ios-glyphs/30/user--v1.png'});
