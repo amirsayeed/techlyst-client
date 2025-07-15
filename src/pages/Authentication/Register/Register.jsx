@@ -19,9 +19,9 @@ const Register = () => {
         .then(result=>{
             const user = result.user;
             
-            updateUser({ displayName: data.name, photoURL: data.photo })
+            updateUser({ displayName: data.name, photoURL: data.photo || 'https://img.icons8.com/ios-glyphs/30/user--v1.png' })
             .then(()=>{
-            setUser({...user, displayName: data.name, photoURL: data.photo});
+            setUser({...user, displayName: data.name, photoURL: data.photo || 'https://img.icons8.com/ios-glyphs/30/user--v1.png'});
             toast.success("Registration successful!");
             navigate('/');
             })

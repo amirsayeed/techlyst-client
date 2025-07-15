@@ -48,11 +48,12 @@ const Navbar = () => {
                     (<div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                            {user.photoURL ? (
+                            {user.photoURL && 
                                 <img src={user.photoURL} alt={user.displayName} />
-                            ) : (
-                                <FaUserCircle size={40} className="text-gray-400" />
-                            )}
+                            // ) : (
+                            //     <FaUserCircle size={40} className="text-gray-400" />
+                            // )}
+                            }
                             </div>
                         </div>
                         <ul
