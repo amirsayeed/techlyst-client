@@ -11,6 +11,7 @@ import PrivateRoute from "../routes/PrivateRoute";
 import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../pages/Dashboard/MyProducts/MyProducts";
+import UpdateProduct from "../pages/Dashboard/MyProducts/UpdateProduct";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: 'addProduct',
         Component: AddProduct
+      },
+      {
+        path: 'updateProduct/:id',
+        Component: UpdateProduct
       },
       {
         path: 'myProducts',
