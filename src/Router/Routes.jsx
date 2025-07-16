@@ -16,6 +16,8 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import Forbidden from "../pages/Forbidden/Forbidden";
 import AdminRoute from "../routes/AdminRoute";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import ManageCoupons from "../pages/Dashboard/ManageCoupons/ManageCoupons";
+import Statistics from "../pages/Dashboard/Statistics/Statistics";
 
 export const router = createBrowserRouter([
   {
@@ -73,8 +75,16 @@ export const router = createBrowserRouter([
 
       //admin only routes
       {
+        path: 'adminStatistics',
+        element: <AdminRoute><Statistics/></AdminRoute>
+      },
+      {
         path: 'manageUsers',
         element: <AdminRoute><ManageUsers/></AdminRoute>
+      },
+      {
+        path: 'manageCoupons',
+        element: <AdminRoute><ManageCoupons/></AdminRoute>
       }
     ]
   }

@@ -16,6 +16,7 @@ const SocialLogin = () => {
             const user = result.user;
             // user update in database
             const userInfo = {
+                name: user.displayName,
                 email: user.email,
                 role: 'user', 
                 subscribed: false, 

@@ -24,6 +24,7 @@ const Register = () => {
             
             // user update in database
             const userInfo = {
+                name: data.name,
                 email: data.email,
                 role: 'user', 
                 subscribed: false, 
