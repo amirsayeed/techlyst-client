@@ -1,9 +1,12 @@
 import React from 'react';
 import TechlystLogo from '../components/Shared/TechlystLogo/TechlystLogo';
 import { NavLink, Outlet } from 'react-router';
-import { FaPlusCircle, FaThList, FaUser } from 'react-icons/fa';
+import { FaChartBar, FaPlusCircle, FaTags, FaThList, FaUser, FaUsersCog } from 'react-icons/fa';
+import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
+    const { role, roleLoading } = useUserRole();
+
     return (
          <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -40,21 +43,55 @@ const DashboardLayout = () => {
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
                     <TechlystLogo/>
-                    <li>
-                    <NavLink to="/dashboard/myProfile">
-                        <FaUser className="inline mr-2" /> My Profile
-                    </NavLink>
-                    </li>
-                    <li>
-                    <NavLink to="/dashboard/addProduct">
-                        <FaPlusCircle className="inline mr-2" /> Add Product
-                    </NavLink>
-                    </li>
-                    <li>
-                    <NavLink to="/dashboard/myProducts">
-                        <FaThList className="inline mr-2" /> My Products
-                    </NavLink>
-                    </li>
+                    
+                    {/* user links */}
+                    {!roleLoading && role === 'user' && (
+                    <>
+                        <li>
+                            <NavLink to="/dashboard/myProfile">
+                                <FaUser className="inline mr-2" /> My Profile
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard/addProduct">
+                                <FaPlusCircle className="inline mr-2" /> Add Product
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard/myProducts">
+                                <FaThList className="inline mr-2" /> My Products
+                            </NavLink>
+                        </li>
+                    </>)
+                    }
+                    
+                    
+                    {/* moderator links */}
+
+                    {/* admin links */}
+                    {!roleLoading && role === 'admin' && (
+                    <>
+                        <li>
+                            <NavLink to="/dashboard/adminHome">
+                                <FaChartBar className="inline-block mr-2" />
+                                Statistics
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard/manageUsers">
+                                <FaUsersCog className="inline-block mr-2" />
+                                Manage Users
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard/manageCoupons">
+                                <FaTags className="inline-block mr-2" />
+                                Manage Coupons
+                            </NavLink>
+                        </li>
+                    </>
+                    )}
+
                 </ul>
             </div>
         </div>
