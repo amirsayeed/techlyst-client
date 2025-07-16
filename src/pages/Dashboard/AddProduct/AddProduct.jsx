@@ -5,13 +5,15 @@ import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
 import useAxios from '../../../hooks/useAxios';
-import '@pathofdev/react-tag-input/build/index.css'; // make sure to import styles
+import '@pathofdev/react-tag-input/build/index.css'; 
+import { useNavigate } from 'react-router';
 
 const AddProduct = () => {
   const { user } = useAuth();
   const [tags, setTags] = useState([]);
   const [productPic, setProductPic] = useState('');
   const [imageTouched, setImageTouched] = useState(false);
+  const navigate = useNavigate();
   const axiosInstance = useAxios();
 
   const {
@@ -64,6 +66,7 @@ const AddProduct = () => {
         setTags([]);
         setProductPic('');
         setImageTouched(false);
+        navigate('/dashboard/myProducts');
       }
     } catch (err) {
       console.error(err);

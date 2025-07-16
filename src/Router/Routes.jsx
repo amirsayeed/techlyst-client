@@ -12,6 +12,7 @@ import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../pages/Dashboard/MyProducts/MyProducts";
 import UpdateProduct from "../pages/Dashboard/MyProducts/UpdateProduct";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: 'myProducts',
         Component: MyProducts
+      }, 
+      {
+        path: 'payment',
+        Component: Payment
       }
     ]
   }
