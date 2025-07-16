@@ -1,7 +1,7 @@
 import React from 'react';
 import TechlystLogo from '../components/Shared/TechlystLogo/TechlystLogo';
 import { NavLink, Outlet } from 'react-router';
-import { FaChartBar, FaPlusCircle, FaTags, FaThList, FaUser, FaUsersCog } from 'react-icons/fa';
+import { FaChartBar, FaClipboardCheck, FaExclamationTriangle, FaPlusCircle, FaTags, FaThList, FaUser, FaUsersCog } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
@@ -67,6 +67,22 @@ const DashboardLayout = () => {
                     
                     
                     {/* moderator links */}
+                    {!roleLoading && role === 'moderator' && (
+                    <>
+                        <li>
+                            <NavLink to="/dashboard/review-queue">
+                                <FaClipboardCheck className="inline-block mr-2" />
+                                Product Review Queue
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/dashboard/reported-products">
+                                <FaExclamationTriangle className="inline-block mr-2" />
+                                Reported Contents
+                            </NavLink>
+                        </li>
+                    </>
+                    )}
 
                     {/* admin links */}
                     {!roleLoading && role === 'admin' && (

@@ -18,6 +18,10 @@ import AdminRoute from "../routes/AdminRoute";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageCoupons from "../pages/Dashboard/ManageCoupons/ManageCoupons";
 import Statistics from "../pages/Dashboard/Statistics/Statistics";
+import ModeratorRoute from "../routes/ModeratorRoute";
+import ReviewQueue from "../pages/Dashboard/ReviewQueue/ReviewQueue";
+import ReportedProducts from "../pages/Dashboard/ReportedProducts/ReportedProducts";
+import ProductDetails from "../pages/Dashboard/ProductDetails/ProductDetails";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +35,10 @@ export const router = createBrowserRouter([
         {
             path: 'forbidden',
             Component: Forbidden
+        },
+        {
+          path: 'products/:id',
+          element: <PrivateRoute><ProductDetails/></PrivateRoute>
         }
     ]
   },
@@ -71,6 +79,16 @@ export const router = createBrowserRouter([
       {
         path: 'payment',
         Component: Payment
+      },
+
+      //moderator only routes
+      {
+        path: 'review-queue',
+        element: <ModeratorRoute><ReviewQueue/></ModeratorRoute>
+      },
+      {
+        path: 'reported-products',
+        element: <ModeratorRoute><ReportedProducts/></ModeratorRoute>
       },
 
       //admin only routes
