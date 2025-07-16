@@ -13,6 +13,9 @@ import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import MyProducts from "../pages/Dashboard/MyProducts/MyProducts";
 import UpdateProduct from "../pages/Dashboard/MyProducts/UpdateProduct";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import Forbidden from "../pages/Forbidden/Forbidden";
+import AdminRoute from "../routes/AdminRoute";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +25,10 @@ export const router = createBrowserRouter([
         {
             index: true,
             Component: Home
+        },
+        {
+            path: 'forbidden',
+            Component: Forbidden
         }
     ]
   },
@@ -62,6 +69,12 @@ export const router = createBrowserRouter([
       {
         path: 'payment',
         Component: Payment
+      },
+
+      //admin only routes
+      {
+        path: 'manageUsers',
+        element: <AdminRoute><ManageUsers/></AdminRoute>
       }
     ]
   }

@@ -40,6 +40,7 @@ const PaymentForm = () => {
       type: 'card',
       card,
     });
+    console.log('Payment method:', paymentMethod);
 
     if (error) {
       setError(error.message);
