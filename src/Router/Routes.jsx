@@ -22,6 +22,7 @@ import ModeratorRoute from "../routes/ModeratorRoute";
 import ReviewQueue from "../pages/Dashboard/ReviewQueue/ReviewQueue";
 import ReportedProducts from "../pages/Dashboard/ReportedProducts/ReportedProducts";
 import ProductDetails from "../pages/Dashboard/ProductDetails/ProductDetails";
+import Products from "../pages/Products/Products";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
         {
             path: 'forbidden',
             Component: Forbidden
+        },
+        {
+            path: 'products',
+            Component: Products
         },
         {
           path: 'products/:id',
