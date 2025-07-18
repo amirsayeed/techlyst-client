@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import ProductCard from './ProductCard';
+import ProductCard from '../../Products/ProductCard';
 
 
 const TrendingProducts = () => {
@@ -21,10 +21,10 @@ const TrendingProducts = () => {
   }
 
   return (
-    <div className="py-10">
+    <div className="my-10 px-1">
       <h2 className="text-3xl font-bold mb-8 text-center">Trending Products</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map(product => (
           <ProductCard key={product._id} product={product} refetch={refetch} />
         ))}

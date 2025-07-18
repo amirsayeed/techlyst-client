@@ -1,8 +1,8 @@
 import { FaArrowUp } from 'react-icons/fa6';
 import { useNavigate } from 'react-router';
-import useAuth from '../../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const ProductCard = ({ product, refetch }) => {
   const { user } = useAuth();
@@ -35,16 +35,16 @@ const ProductCard = ({ product, refetch }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-lg border border-gray-200 rounded-xl hover:shadow-xl transition">
-      <figure className="h-40 overflow-hidden">
+    <div className="card bg-base-100 shadow-lg border border-gray-200 rounded-xl hover:shadow-xl transition p-5">
+      <figure>
         <img
           src={product.productImageUrl}
           alt={product.productName}
-          className="w-full h-full object-cover"
+          className="w-full h-[200px]"
         />
       </figure>
 
-      <div className="card-body space-y-1">
+      <div className="mt-3 space-y-4">
         <h3
           className="text-center text-xl font-bold cursor-pointer hover:text-blue-600"
           onClick={() => navigate(`/products/${product._id}`)}
@@ -52,18 +52,18 @@ const ProductCard = ({ product, refetch }) => {
           {product.productName}
         </h3>
 
-        <div className="flex flex-wrap gap-2 text-sm mb-4">
+        <div className="flex flex-wrap justify-center gap-2 text-sm mb-4">
           {product.tags?.map(tag => (
             <span
               key={tag}
-              className="bg-green-100 text-green-600 px-2 py-1 rounded-full"
+              className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full"
             >
               #{tag}
             </span>
           ))}
         </div>
 
-        <div className="card-actions mt-auto">
+        <div className="card-actions mt-3">
           <button
             disabled={isOwner || hasVoted}
             onClick={handleUpvote}

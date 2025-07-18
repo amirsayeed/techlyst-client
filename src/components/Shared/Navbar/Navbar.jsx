@@ -50,9 +50,6 @@ const Navbar = () => {
                             <div className="w-10 rounded-full">
                             {user.photoURL && 
                                 <img src={user.photoURL} alt={user.displayName} />
-                            // ) : (
-                            //     <FaUserCircle size={40} className="text-gray-400" />
-                            // )}
                             }
                             </div>
                         </div>
