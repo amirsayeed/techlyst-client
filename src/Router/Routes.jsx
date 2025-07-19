@@ -21,7 +21,7 @@ import Statistics from "../pages/Dashboard/Statistics/Statistics";
 import ModeratorRoute from "../routes/ModeratorRoute";
 import ReviewQueue from "../pages/Dashboard/ReviewQueue/ReviewQueue";
 import ReportedProducts from "../pages/Dashboard/ReportedProducts/ReportedProducts";
-import ProductDetails from "../pages/Dashboard/ProductDetails/ProductDetails";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Products from "../pages/Products/Products";
 
 export const router = createBrowserRouter([
