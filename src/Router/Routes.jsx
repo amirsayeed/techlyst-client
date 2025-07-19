@@ -20,9 +20,9 @@ import ManageCoupons from "../pages/Dashboard/ManageCoupons/ManageCoupons";
 import Statistics from "../pages/Dashboard/Statistics/Statistics";
 import ModeratorRoute from "../routes/ModeratorRoute";
 import ReviewQueue from "../pages/Dashboard/ReviewQueue/ReviewQueue";
-import ReportedProducts from "../pages/Dashboard/ReportedProducts/ReportedProducts";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Products from "../pages/Products/Products";
+import ReportedContents from "../pages/Dashboard/ReportedContents/ReportedContents";
 
 export const router = createBrowserRouter([
   {
@@ -92,8 +92,8 @@ export const router = createBrowserRouter([
         element: <ModeratorRoute><ReviewQueue/></ModeratorRoute>
       },
       {
-        path: 'reported-products',
-        element: <ModeratorRoute><ReportedProducts/></ModeratorRoute>
+        path: 'reported-contents',
+        element: <ModeratorRoute><ReportedContents/></ModeratorRoute>
       },
 
       //admin only routes

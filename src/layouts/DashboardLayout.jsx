@@ -76,7 +76,7 @@ const DashboardLayout = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/reported-products">
+                            <NavLink to="/dashboard/reported-contents">
                                 <FaExclamationTriangle className="inline-block mr-2" />
                                 Reported Contents
                             </NavLink>

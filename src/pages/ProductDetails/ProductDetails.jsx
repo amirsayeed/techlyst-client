@@ -66,7 +66,7 @@ const ProductDetails = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-5">
-      <img src={productImageUrl} alt={productName} className="w-full rounded-2xl shadow" />
+      <img src={productImageUrl} alt={productName} className="w-full h-[75vh] rounded-2xl shadow" />
       <div className="flex flex-col md:flex-row justify-between">
         <h1 className="text-3xl font-bold">{productName}</h1>
         {externalLink && (
