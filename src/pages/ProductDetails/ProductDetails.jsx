@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Reviews from "./Reviews";
 import ReviewForm from "./ReviewForm";
+import Loading from "../../components/Shared/Loading/Loading";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -45,12 +46,14 @@ const ProductDetails = () => {
         toast.error("Already reported.");
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
       toast.error("Failed to report.");
     }
   };
 
-  if (!product) return <p>Loading...</p>;
+  if (!product){
+    return <Loading/>;
+  }
 
   const {
     productName,
@@ -62,7 +65,7 @@ const ProductDetails = () => {
   } = product;
 
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
+    <div className="max-w-6xl mx-auto p-6 space-y-5">
       <img src={productImageUrl} alt={productName} className="w-full rounded-2xl shadow" />
       <div className="flex flex-col md:flex-row justify-between">
         <h1 className="text-3xl font-bold">{productName}</h1>
