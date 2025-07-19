@@ -74,7 +74,7 @@ const ProductDetails = () => {
           href={externalLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-primary"
+          className="btn btn-primary p-3"
         >
           Visit Website
         </a>
@@ -84,7 +84,7 @@ const ProductDetails = () => {
 
       <div className="flex flex-wrap gap-2">
         {tags?.map((tag, i) => (
-          <span key={i} className="badge text-blue-500 bg-blue-100">#{tag}</span>
+          <span key={i} className="badge p-3 text-blue-500 bg-blue-100">#{tag}</span>
         ))}
       </div>
 
