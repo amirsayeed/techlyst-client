@@ -26,7 +26,7 @@ const ReviewForm = ({ productId, refetch }) => {
         toast.success("Review submitted!");
         setDescription("");
         setRating(5);
-        refetch();
+        refetch && refetch();
       }
     } catch (err) {
       console.error("Review submission failed", err);
