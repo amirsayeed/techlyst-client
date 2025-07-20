@@ -4,10 +4,10 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from '../../../components/Shared/Loading/Loading'
 import { useState } from "react";
 import CouponCard from "./CouponCard";
+import Swal from "sweetalert2";
 
 const ManageCoupons = () => {
   const axiosSecure = useAxiosSecure();
-  const [selectCoupon, setSelectedCoupon] = useState(null);
 
   const { data: coupons = [], refetch, isLoading } = useQuery({
     queryKey: ["coupons"],
@@ -21,6 +21,42 @@ const ManageCoupons = () => {
     return <Loading/>;
   }
 
+  const handleDelete = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Are you sure?",
+      text: "This will permanently delete the coupon.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (confirm.isConfirmed) {
+      try {
+        const res = await axiosSecure.delete(`/coupons/${id}`);
+        if (res.data.deletedCount > 0) {
+          Swal.fire("Deleted!", "The coupon has been removed.", "success");
+          refetch();
+        }
+      } catch (error) {
+        console.error("Coupon delete failed", error);
+        Swal.fire("Error", "Failed to delete the coupon.", "error");
+      }
+    }
+  };
+
+  const handleUpdate = async (id, updatedData) => {
+    try {
+      const res = await axiosSecure.patch(`/coupons/${id}`, updatedData);
+      if (res.data.modifiedCount > 0) {
+        Swal.fire("Updated!", "Coupon updated successfully.", "success");
+        refetch();
+      }
+    } catch (error) {
+      console.error("Coupon update failed", error);
+      Swal.fire("Error", "Failed to update the coupon.", "error");
+    }
+  };
+
   return (
     <div className="p-6 space-y-8">
       <h2 className="text-2xl font-bold">Manage Coupons</h2>
@@ -29,8 +65,8 @@ const ManageCoupons = () => {
           <CouponCard
             key={coupon._id}
             coupon={coupon}
-            setSelectedCoupon={setSelectedCoupon}
-            refetch={refetch}
+            onDelete={handleDelete}
+            onUpdate={handleUpdate}
           />
         ))}
       </div>

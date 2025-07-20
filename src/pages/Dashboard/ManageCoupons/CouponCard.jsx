@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-const CouponCard = ({ coupon }) => {
+const CouponCard = ({ coupon, onDelete, onUpdate }) => {
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const {
     _id,
@@ -31,12 +33,12 @@ const CouponCard = ({ coupon }) => {
         </p>
 
         <div className="card-actions mt-4 justify-end">
-          <button
+          <button onClick={() => setIsEditOpen(true)}
             className="btn btn-sm btn-outline btn-info"
           >
             <FaEdit className="mr-1" /> Edit
           </button>
-          <button
+          <button onClick={() => onDelete(_id)}
             className="btn btn-sm btn-outline btn-error"
           >
             <FaTrash className="mr-1" /> Delete
