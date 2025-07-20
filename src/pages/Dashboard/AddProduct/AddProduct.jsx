@@ -4,9 +4,11 @@ import ReactTags from '@pathofdev/react-tag-input';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import axios from 'axios';
-import useAxios from '../../../hooks/useAxios';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import '@pathofdev/react-tag-input/build/index.css'; 
 import { useNavigate } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
+
 
 const AddProduct = () => {
   const { user } = useAuth();
@@ -14,7 +16,7 @@ const AddProduct = () => {
   const [productPic, setProductPic] = useState('');
   const [imageTouched, setImageTouched] = useState(false);
   const navigate = useNavigate();
-  const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
 
   const {
     register,
@@ -22,6 +24,25 @@ const AddProduct = () => {
     reset,
     formState: { errors }
   } = useForm();
+
+  const { data: userData, isLoading } = useQuery({
+    queryKey: ['user', user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
+
+  const { data: productCount = 0 } = useQuery({
+    queryKey: ['productsCount', user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/products/count/${user?.email}`);
+      return res.data.count;
+    },
+    enabled: !!user?.email && userData?.subscribed === false, 
+  });
+
 
   const handleImageUpload = async (e) => {
     setImageTouched(true);
@@ -59,7 +80,7 @@ const AddProduct = () => {
     };
 
     try {
-      const res = await axiosInstance.post('/products', product);
+      const res = await axiosSecure.post('/products', product);
       if (res.data.insertedId) {
         Swal.fire('Success!', 'Product added successfully.', 'success');
         reset();
