@@ -23,6 +23,7 @@ import ReviewQueue from "../pages/Dashboard/ReviewQueue/ReviewQueue";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Products from "../pages/Products/Products";
 import ReportedContents from "../pages/Dashboard/ReportedContents/ReportedContents";
+import ApplyCoupon from "../pages/Dashboard/ApplyCoupon/ApplyCoupon";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: 'myProducts',
         Component: MyProducts
+      }, 
+      {
+        path: 'apply-coupon',
+        Component: ApplyCoupon
       }, 
       {
         path: 'payment',

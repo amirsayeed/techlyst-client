@@ -25,6 +25,10 @@ const MyProfile = () => {
     navigate('/dashboard/payment');
   };
 
+  const handleApplyCoupon = () => {
+    navigate('/dashboard/apply-coupon');
+  };
+
   if (isLoading) {
     return <Loading/>;
   }
@@ -43,12 +47,18 @@ const MyProfile = () => {
             <p className="px-5 text-xs sm:text-base text-gray-500">{user?.email}</p>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 space-y-2">
             {!dbUser?.subscribed ? (
-              <button onClick={handleSubscribe} className="btn btn-primary w-full">
-                Subscribe - $5/month
-              </button>
-            ) : (
+              <>
+                <button onClick={handleSubscribe} className="btn btn-primary w-full">
+                  Subscribe - $5/month
+                </button>
+                <div className="text-sm text-gray-400 font-semibold">OR</div>
+                <button onClick={handleApplyCoupon} className="btn btn-success text-white w-full">
+                  Apply Coupon
+                </button>
+              </>
+            ): (
               <button className="badge badge-success text-white px-4 py-2 mt-2 text-sm">
                 Membership Status: Verified
               </button>

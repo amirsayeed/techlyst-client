@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -11,11 +11,15 @@ const PaymentForm = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+  const {state} = useLocation();
+  const coupon = state?.coupon;
   const [error, setError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const amount = 5;
-  const amountInCents = amount * 100;
+  const baseAmount = 5;
+  const discount = coupon?.discountAmount || 0;
+  const finalAmount = baseAmount - discount;
+  const amountInCents = finalAmount * 100;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +27,7 @@ const PaymentForm = () => {
 
     const confirm = await Swal.fire({
       title: 'Confirm Payment',
-      text: `Do you want to pay $${amount} for membership?`,
+      text: `Do you want to pay $${finalAmount} for membership?`,
       icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Yes, Pay Now',
@@ -72,7 +76,7 @@ const PaymentForm = () => {
 
         const paymentData = {
           email: user.email,
-          amount,
+          finalAmount,
           transactionId: result.paymentIntent.id,
           paymentMethod: result.paymentIntent.payment_method_types,
         };
@@ -129,7 +133,7 @@ const PaymentForm = () => {
           className="btn btn-primary w-full text-white"
           disabled={!stripe || isProcessing}
         >
-          {isProcessing ? 'Processing...' : `Pay $${amount}`}
+          {isProcessing ? 'Processing...' : `Pay $${finalAmount}`}
         </button>
       </form>
     </div>

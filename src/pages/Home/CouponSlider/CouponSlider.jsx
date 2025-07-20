@@ -23,7 +23,7 @@ const CouponSlider = () => {
 
   return (
     <div className="my-10">
-      <h2 className="text-2xl font-bold mb-4 text-center">Grab Our Latest Coupons!</h2>
+      <h2 className="text-3xl font-bold mb-4 text-center">Grab Our Latest Coupons!</h2>
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={20}
