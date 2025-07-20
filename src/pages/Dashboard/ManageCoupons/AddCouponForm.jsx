@@ -9,9 +9,10 @@ const AddCouponForm = ({ refetch }) => {
   const onSubmit = async (data) => {
     const newCoupon = {
       code: data.code,
-      expiryDate: data.expiryDate,
+      expiryDate: new Date(data.expiryDate).toISOString(),
       description: data.description,
-      discountAmount: parseFloat(data.discountAmount)
+      discountAmount: parseFloat(data.discountAmount),
+      isActive: true,
     };
 
     try {
@@ -72,6 +73,7 @@ const AddCouponForm = ({ refetch }) => {
           <label className="label">Discount Amount</label>
           <input
             type="number"
+            step="0.01"
             className="input input-bordered w-full"
             {...register("discountAmount", { required: true, min: 0 })}
           />
