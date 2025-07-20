@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import EditCoupon from "./EditCoupon";
 
 const CouponCard = ({ coupon, onDelete, onUpdate }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
@@ -45,6 +46,17 @@ const CouponCard = ({ coupon, onDelete, onUpdate }) => {
           </button>
         </div>
       </div>
+
+      {isEditOpen && (
+        <EditCoupon
+          coupon={coupon}
+          onClose={() => setIsEditOpen(false)}
+          onUpdate={(updatedData) => {
+            onUpdate(_id, updatedData);
+            setIsEditOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 };
