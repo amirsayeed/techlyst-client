@@ -8,6 +8,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import '@pathofdev/react-tag-input/build/index.css'; 
 import { useNavigate } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../../../components/Shared/Loading/Loading';
 
 
 const AddProduct = () => {
@@ -25,7 +26,7 @@ const AddProduct = () => {
     formState: { errors }
   } = useForm();
 
-  const { data: userData, isLoading } = useQuery({
+  const { data: userData, isLoading: userLoading } = useQuery({
     queryKey: ['user', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/${user?.email}`);
@@ -34,7 +35,7 @@ const AddProduct = () => {
     enabled: !!user?.email,
   });
 
-  const { data: productCount = 0 } = useQuery({
+  const { data: productCount = 0, isLoading: countLoading } = useQuery({
     queryKey: ['productsCount', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/products/count/${user?.email}`);
@@ -67,6 +68,15 @@ const AddProduct = () => {
       return;
     }
 
+    if (userData?.subscribed === false && productCount >= 1) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Post Limit Reached',
+        text: 'Subscribe to add more than 1 product.',
+      });
+      return;
+    }
+
     const product = {
       productName: data.productName,
       description: data.description,
@@ -96,6 +106,9 @@ const AddProduct = () => {
         title: 'Failed!',
         text: err.response?.data?.error || 'Something went wrong while adding the product.'
       });
+    }
+    if (userLoading || countLoading) {
+      return <Loading/>;
     }
   };
 
