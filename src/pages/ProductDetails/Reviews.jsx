@@ -1,25 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Loading from "../../components/Shared/Loading/Loading";
 
-const Reviews = ({ productId }) => {
-  const axiosSecure = useAxiosSecure();
-
-  const { data: reviews = [], isLoading } = useQuery({
-    queryKey: ["reviews", productId],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/reviews/${productId}`);
-      return res.data;
-    },
-  });
-
-  if (isLoading) return <p>Loading reviews...</p>;
+const Reviews = ({ reviews, isLoading }) => {
+  if(isLoading) return <Loading/>
 
   return (
     <div className="flex-1 space-y-4 mt-6">
       <h2 className="text-xl font-semibold">Reviews</h2>
       {reviews.length === 0 && <p>No reviews yet.</p>}
-      {reviews.map((review, i) => (
-        <div key={i} className="p-5 bg-base-200 rounded-xl shadow">
+      {reviews.map((review, idx) => (
+        <div key={idx} className="p-5 bg-base-200 rounded-xl shadow">
             <div className="flex items-start gap-2">
                 <img
                 src={review.reviewerImage}

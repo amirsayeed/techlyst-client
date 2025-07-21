@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
 
-const ReviewForm = ({ productId, refetch }) => {
+const ReviewForm = ({ productId, refetchReviews }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [description, setDescription] = useState("");
@@ -26,7 +26,7 @@ const ReviewForm = ({ productId, refetch }) => {
         toast.success("Review submitted!");
         setDescription("");
         setRating(5);
-        refetch && refetch();
+        refetchReviews && refetchReviews();
       }
     } catch (err) {
       console.error("Review submission failed", err);

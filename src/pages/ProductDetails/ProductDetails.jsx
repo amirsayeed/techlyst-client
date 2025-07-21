@@ -12,10 +12,22 @@ const ProductDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: product, refetch } = useQuery({
+  const { data: product, isLoading: isProductLoading, refetch } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
       const res = await axiosSecure.get(`/products/${id}`);
+      return res.data;
+    },
+  });
+
+  const {
+    data: reviews = [],
+    refetch: refetchReviews,
+    isLoading: isReviewsLoading,
+  } = useQuery({
+    queryKey: ["reviews", id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/reviews/${id}`);
       return res.data;
     },
   });
@@ -51,7 +63,7 @@ const ProductDetails = () => {
     }
   };
 
-  if (!product){
+  if (isProductLoading){
     return <Loading/>;
   }
 
@@ -98,8 +110,15 @@ const ProductDetails = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-5 justify-between">
-        <Reviews productId={id} />
-        <ReviewForm productId={id} refetch={refetch} />
+        <Reviews 
+        reviews={reviews} 
+        isLoading={isReviewsLoading} 
+        />
+        
+        <ReviewForm 
+        productId={id} 
+        refetchReviews={refetchReviews} 
+        />
       </div>
     </div>
   );
