@@ -24,11 +24,13 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Products from "../pages/Products/Products";
 import ReportedContents from "../pages/Dashboard/ReportedContents/ReportedContents";
 import ApplyCoupon from "../pages/Dashboard/ApplyCoupon/ApplyCoupon";
+import Error from "../components/Shared/Error/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout/>,
+    errorElement: <Error/>,
     children: [
         {
             index: true,
@@ -51,6 +53,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     Component: AuthLayout,
+    errorElement: <Error/>,
     children: [
         {
             path: 'login',
@@ -65,6 +68,7 @@ export const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+    errorElement: <Error/>,
     children: [
       {
         path: 'myProfile',

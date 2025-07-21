@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Loading from '../../components/Shared/Loading/Loading';
 import ProductCard from './ProductCard';
-import { data } from 'react-router';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
 
@@ -30,7 +29,7 @@ const Products = () => {
   const totalPages = data?.totalPages || 0;
 
   return (
-    <div className="my-10">
+    <div className="my-10 px-1">
       <h2 className="text-3xl font-bold mb-6 text-center">All Products</h2>
 
       <SearchBar search={search} setSearch={setSearch} setPage={setPage}/>
