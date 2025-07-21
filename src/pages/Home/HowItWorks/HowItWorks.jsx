@@ -46,11 +46,11 @@ const HowItWorks = () => {
               className="card bg-base-200 p-3 shadow-md hover:shadow-xl transition-all duration-300"
             >
               <div className="card-body items-center text-center">
-                <div className="mb-4">{step.icon}</div>
-                <h3 className="card-title text-lg font-semibold">
+                <span className="mb-4">{step.icon}</span>
+                <h3 className="text-lg font-bold">
                   {step.title}
                 </h3>
-                <p className="text-sm">{step.description}</p>
+                <p className="text-sm font-medium">{step.description}</p>
               </div>
             </div>
           ))}

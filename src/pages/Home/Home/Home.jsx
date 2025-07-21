@@ -4,6 +4,7 @@ import FeaturedProducts from '../FeaturedProducts/FeaturedProducts';
 import TrendingProducts from '../TrendingProducts/TrendingProducts';
 import CouponSlider from '../CouponSlider/CouponSlider';
 import HowItWorks from '../HowItWorks/HowItWorks';
+import UserReviews from '../UserReviews/UserReviews';
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             <TrendingProducts/>
             <CouponSlider/>
             <HowItWorks/>
+            <UserReviews/>
         </div>
     );
 };
