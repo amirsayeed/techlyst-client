@@ -12,7 +12,7 @@ const Login = () => {
     const location = useLocation();
     
     const onSubmit = data => {
-        console.log(data);
+        //console.log(data);
         signIn(data.email, data.password)
         .then(result => {
             console.log(result.user);

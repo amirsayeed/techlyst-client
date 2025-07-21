@@ -12,9 +12,13 @@ const ReportedContents = () => {
     queryKey: ['reported-products'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/accepted-products?isReported=true`);
-      return res.data;
+      return res.data.products;
     },
   });
+
+  if (isLoading){
+    return <Loading/>;
+  };
 
   const handleDelete = async (id) => {
      const result = await Swal.fire({
@@ -42,10 +46,6 @@ const ReportedContents = () => {
       }
     }
   };
-
-  if (isLoading){
-    return <Loading/>;
-  } ;
 
   return (
     <div className="p-4">
