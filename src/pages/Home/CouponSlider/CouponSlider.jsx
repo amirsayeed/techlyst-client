@@ -3,18 +3,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAxios from '../../../hooks/useAxios';
 import { FaCalendarAlt, FaMoneyBillWave, FaTags } from 'react-icons/fa';
 import { format } from 'date-fns';
 import Loading from '../../../components/Shared/Loading/Loading';
 
 const CouponSlider = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
 
   const { data: coupons = [], isLoading } = useQuery({
     queryKey: ['coupons', 'active'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/coupons?active=true');
+      const res = await axiosInstance.get('/coupons?active=true');
       return res.data;
     },
   });

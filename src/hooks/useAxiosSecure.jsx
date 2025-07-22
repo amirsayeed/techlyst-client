@@ -18,24 +18,25 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
     })
 
-    axiosSecure.interceptors.response.use(res => {
-        return res;
+    
+    axiosSecure.interceptors.response.use(response => {
+        return response;
     }, error => {
-        const status = error.status;
+        const status = error.response?.status;
         if (status === 403) {
             navigate('/forbidden');
         }
         else if (status === 401) {
             logOut()
-                .then(() => {
-                    navigate('/login')
-                })
-                .catch(() => { })
+            .then(() => {
+                navigate('/login')
+            })
+            .catch(error=>{
+                console.log(error);
+            })
         }
-
         return Promise.reject(error);
     })
-
 
     return axiosSecure;
 };

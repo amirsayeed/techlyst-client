@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxios from '../../hooks/useAxios';
 import Loading from '../../components/Shared/Loading/Loading';
 import ProductCard from './ProductCard';
 import SearchBar from './SearchBar';
 import Pagination from './Pagination';
-
 
 const Products = () => {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
   const limit = 6;
 
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['accepted-products', search, page],
     queryFn: async () => {
-      const res = await axiosSecure.get('/accepted-products', {
+      const res = await axiosInstance.get('/accepted-products', {
         params: { search, page, limit },
       });
       return res.data;

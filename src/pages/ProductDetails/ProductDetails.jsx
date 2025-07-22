@@ -63,7 +63,7 @@ const ProductDetails = () => {
     }
   };
 
-  if (isProductLoading){
+  if (isProductLoading || !product){
     return <Loading/>;
   }
 
@@ -74,7 +74,7 @@ const ProductDetails = () => {
     tags,
     externalLink,
     votes,
-  } = product;
+  } = product || {};
 
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-5">

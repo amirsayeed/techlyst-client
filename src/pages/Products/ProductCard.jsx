@@ -2,12 +2,12 @@ import { FaArrowUp } from 'react-icons/fa6';
 import { useNavigate } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxios from '../../hooks/useAxios';
 
 const ProductCard = ({ product, refetch }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
 
   const isOwner = user?.email === product.ownerEmail;
   const hasVoted = product.voters?.includes(user?.email);
@@ -18,7 +18,7 @@ const ProductCard = ({ product, refetch }) => {
     }
 
     try {
-      const res = await axiosSecure.patch(`/products/upvote/${product._id}`, {
+      const res = await axiosInstance.patch(`/products/upvote/${product._id}`, {
         userEmail: user.email,
       });
 

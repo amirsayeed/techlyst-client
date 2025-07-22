@@ -1,19 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import { FaArrowUp } from 'react-icons/fa';
 import Loading from '../../../components/Shared/Loading/Loading';
+import useAxios from '../../../hooks/useAxios';
 
 const FeaturedProducts = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
   const { user } = useAuth();
   const navigate = useNavigate();
 
   const { data: products = [], isLoading, isError, refetch } = useQuery({
     queryKey: ['featured-products'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/featured-products');
+      const res = await axiosInstance.get('/featured-products');
       return res.data;
     }
   });
@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
     if (!user) return navigate('/login');
 
     try {
-      const res = await axiosSecure.patch(`/products/upvote/${productId}`, {
+      const res = await axiosInstance.patch(`/products/upvote/${productId}`, {
         voterEmail: user.email
       });
 

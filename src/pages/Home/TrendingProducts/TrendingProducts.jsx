@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAxios from '../../../hooks/useAxios';
 import ProductCard from '../../Products/ProductCard';
 
 
 const TrendingProducts = () => {
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  const axiosInstance = useAxios();
 
   const { data: products = [], isLoading, refetch } = useQuery({
     queryKey: ['trending-products'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/trending-products');
+      const res = await axiosInstance.get('/trending-products');
       return res.data;
     },
   });

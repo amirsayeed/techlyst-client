@@ -7,34 +7,34 @@ const ReviewCard = ({ review }) => {
   return (
     <Link to={`/products/${productId}`}>
         <div className="card bg-base-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-3">
-        <div className="card-body p-4">
-            <div className="flex justify-between items-start">
-            <div className="flex items-center gap-3">
-                <img
-                src={reviewerImage}
-                alt={reviewerName}
-                className="w-12 h-12 rounded-full object-cover"
-                />
-                <div className='space-y-1'>
-                <h3 className="font-semibold text-base-content">{reviewerName}</h3>
-                <p className="text-xs text-base-content/60">
-                    {new Date(createdAt).toLocaleDateString()}
-                </p>
+            <div className="card-body p-4">
+                <div className="flex justify-between items-start">
+                <div className="flex items-center gap-3">
+                    <img
+                    src={reviewerImage}
+                    alt={reviewerName}
+                    className="w-12 h-12 rounded-full object-cover"
+                    />
+                    <div className='space-y-1'>
+                    <h3 className="font-semibold text-base-content">{reviewerName}</h3>
+                    <p className="text-xs text-base-content/60">
+                        {new Date(createdAt).toLocaleDateString()}
+                    </p>
+                    </div>
                 </div>
-            </div>
-            <div className="flex gap-1 mt-1">
-                {[...Array(rating)].map((_, i) => (
-                <FaStar key={i} className="text-warning text-sm" />
-                ))}
-            </div>
-            </div>
+                <div className="flex gap-1 mt-1">
+                    {[...Array(rating)].map((_, i) => (
+                    <FaStar key={i} className="text-warning text-sm" />
+                    ))}
+                </div>
+                </div>
 
-            <div className="divider my-2"></div>
+                <div className="divider my-2"></div>
 
-            <p className="text-base text-base-content line-clamp-1">
-            {description}
-            </p>
-        </div>
+                <p className="text-base text-base-content line-clamp-1">
+                {description}
+                </p>
+            </div>
         </div>
     </Link>
   );
