@@ -25,6 +25,7 @@ import Products from "../pages/Products/Products";
 import ReportedContents from "../pages/Dashboard/ReportedContents/ReportedContents";
 import ApplyCoupon from "../pages/Dashboard/ApplyCoupon/ApplyCoupon";
 import Error from "../components/Shared/Error/Error";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
     children: [
+      {
+        index: true,
+        Component: DashboardHome
+      },
       {
         path: 'myProfile',
         Component: MyProfile

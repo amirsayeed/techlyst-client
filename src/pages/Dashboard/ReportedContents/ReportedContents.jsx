@@ -11,7 +11,7 @@ const ReportedContents = () => {
   const { data: reportedProducts = [], refetch, isLoading } = useQuery({
     queryKey: ['reported-products'],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/accepted-products?isReported=true`);
+      const res = await axiosSecure.get('/reported-products');
       return res.data.products;
     },
   });
