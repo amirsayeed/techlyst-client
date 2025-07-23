@@ -6,6 +6,9 @@ import { toast } from "react-toastify";
 import Reviews from "./Reviews";
 import ReviewForm from "./ReviewForm";
 import Loading from "../../components/Shared/Loading/Loading";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { BiSolidUpvote} from "react-icons/bi";
+import { MdReportProblem } from "react-icons/md";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -81,31 +84,34 @@ const ProductDetails = () => {
       <img src={productImageUrl} alt={productName} className="w-full h-[75vh] rounded-2xl shadow" />
       <div className="flex flex-col md:flex-row justify-between">
         <h1 className="text-3xl font-bold">{productName}</h1>
-        {externalLink && (
+
         <a
           href={externalLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-primary p-3"
+          className="btn flex text-white bg-[#4dbbe8] hover:bg-[#1a91c2] rounded-xl p-3"
         >
-          Visit Website
+          <span>Visit Website</span>
+          <span><FaExternalLinkAlt /></span>
         </a>
-      )}
+
       </div>
       <p className="text-lg">{description}</p>
 
       <div className="flex flex-wrap gap-2">
         {tags?.map((tag, i) => (
-          <span key={i} className="badge p-3 text-blue-500 bg-blue-100">#{tag}</span>
+          <span key={i} className="badge p-4 font-medium bg-[#d4e7ee] text-[#1891c2]">#{tag}</span>
         ))}
       </div>
 
       <div className="flex items-center gap-4 mt-4">
-        <button onClick={handleUpvote} className="btn btn-success btn-sm">
-          Upvote ({votes || 0})
+        <button onClick={handleUpvote} className="btn flex text-white bg-[#4dbbe8] hover:bg-[#1a91c2] btn-md rounded-xl">
+          <span><BiSolidUpvote /></span>
+          <span>Upvote ({votes || 0})</span>
         </button>
-        <button onClick={handleReport} className="btn btn-error btn-sm">
-          Report
+        <button onClick={handleReport} className="btn flex text-white bg-[#4dbbe8] hover:bg-[#1a91c2] btn-md rounded-xl">
+          <span><MdReportProblem /></span>
+          <span>Report</span>
         </button>
       </div>
 

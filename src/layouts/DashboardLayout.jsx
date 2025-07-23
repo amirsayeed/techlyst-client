@@ -13,7 +13,7 @@ const DashboardLayout = () => {
             <div className="drawer-content flex flex-col">
 
                 {/* Navbar */}
-                <div className="navbar bg-base-300 w-full lg:hidden">
+                <div className="navbar bg-[#78cbee] w-full lg:hidden">
                     <div className="flex-none ">
                         <label htmlFor="my-drawer-2" aria-label="open sidebar" className="btn btn-square btn-ghost">
                             <svg
@@ -31,7 +31,7 @@ const DashboardLayout = () => {
                             </svg>
                         </label>
                     </div>
-                    <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
+                    <div className="mx-2 flex-1 px-2 font-semibold lg:hidden">Dashboard</div>
 
                 </div>
                 
@@ -40,7 +40,7 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full gap-2 w-80 p-4">
+                <ul className="menu bg-base-200 text-base-content min-h-full gap-2 w-80 p-4 font-medium">
                     {/* Sidebar content here */}
                     <TechlystLogo/>
                     

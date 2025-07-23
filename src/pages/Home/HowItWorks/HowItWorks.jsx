@@ -6,31 +6,31 @@ const steps = [
       title: 'Browse the Latest Products',
       description:
         'Explore a curated list of the latest tech gadgets submitted by users.',
-      icon: <FaSearch className="text-3xl text-primary" />,
+      icon: <FaSearch className="text-3xl text-[#1a91c2]" />,
     },
     {
       title: 'Upvote Your Favorites',
       description:
         'Like a product? Upvote to support it and help it trend on Techlyst.',
-      icon: <FaThumbsUp className="text-3xl text-primary" />,
+      icon: <FaThumbsUp className="text-3xl text-[#1a91c2]" />,
     },
     {
       title: 'Submit Your Own Products',
       description:
         'Discovered a cool tech item? Share it with the community for review.',
-      icon: <FaRocket className="text-3xl text-primary" />,
+      icon: <FaRocket className="text-3xl text-[#1a91c2]" />,
     },
     {
       title: 'Report & Review Products',
       description:
         'Help maintain quality by reporting inappropriate listings and leaving reviews.',
-      icon: <FaShieldAlt className="text-3xl text-primary" />,
+      icon: <FaShieldAlt className="text-3xl text-[#1a91c2]" />,
     },
   ];
 
 const HowItWorks = () => {
     return (
-    <div className="my-10 bg-base-100">
+    <div className="my-12 bg-base-100">
       <div className="px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-neutral">
           How Techlyst Works
@@ -43,7 +43,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="card bg-base-200 p-3 shadow-md hover:shadow-xl transition-all duration-300"
+              className="card p-3 bg-base-100 shadow-xl border border-gray-300 rounded-xl hover:shadow-xl transition-all duration-300"
             >
               <div className="card-body items-center text-center">
                 <span className="mb-4">{step.icon}</span>

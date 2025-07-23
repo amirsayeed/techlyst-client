@@ -43,7 +43,7 @@ const FeaturedProducts = () => {
   }
 
   return (
-    <div className="my-10 px-1">
+    <div className="my-12 px-1">
       <h2 className="text-3xl font-bold mb-8 text-center">Featured Products</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -54,18 +54,18 @@ const FeaturedProducts = () => {
           return (
             <div
               key={product._id}
-              className="card bg-base-100 shadow-lg border border-gray-200 rounded-xl hover:shadow-xl transition"
+              className="card bg-base-100 shadow-xl border border-gray-300 rounded-xl hover:shadow-xl transition"
             >
-              <figure>
+              <figure className='p-3'>
                 <img
                   src={product.productImageUrl}
                   alt={product.productName}
-                  className="h-[200px]"
+                  className="h-[200px] rounded-xl"
                 />
               </figure>
-              <div className="card-body space-y-1">
+              <div className="card-body pt-1 space-y-2">
                 <h3
-                  className="text-center text-xl font-bold cursor-pointer hover:text-blue-600"
+                  className="text-center text-xl font-bold cursor-pointer hover:text-[#1a91c2]"
                   onClick={() => navigate(`/products/${product._id}`)}
                 >
                   {product.productName}
@@ -75,7 +75,7 @@ const FeaturedProducts = () => {
                   {product.tags.map(tag => (
                     <span
                       key={tag}
-                      className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full"
+                      className="bg-[#d4e7ee] text-[#1891c2] px-2 py-1 rounded-full"
                     >
                       #{tag}
                     </span>
@@ -89,7 +89,7 @@ const FeaturedProducts = () => {
                     className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-white font-medium transition ${
                       isOwner || hasVoted
                         ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-blue-600 hover:bg-blue-700'
+                        : 'bg-[#4dbbe8] hover:bg-[#1a91c2]'
                     }`}
                   >
                     <FaArrowUp /> {product.votes || 0} Upvotes

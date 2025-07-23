@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router';
 import TechlystLogo from '../TechlystLogo/TechlystLogo';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
-import { FaUserCircle } from 'react-icons/fa';
 import { useQueryClient } from '@tanstack/react-query';
 
 const Navbar = () => {
@@ -82,7 +81,7 @@ const Navbar = () => {
                         </div>
                     ) :
                     (<div>
-                        <Link to='/login' className="btn btn-primary p-2 text-sm rounded-md">Login</Link>
+                        <Link to='/login' className="btn text-white bg-[#4dbbe8] p-2 text-sm rounded-md">Login</Link>
                     </div>)}
             </div>
             </div>

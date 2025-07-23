@@ -113,22 +113,22 @@ const ReviewQueue = () => {
               <td>{product.productName}</td>
               <td className="capitalize">{product.status}</td>
               <td>
-                <Link to={`/products/${product._id}`} className="btn btn-sm btn-info">
+                <Link to={`/products/${product._id}`} className="btn btn-sm text-white bg-[#4dbbe8]">
                   <FaEye className="mr-1" /> View
                 </Link>
               </td>
               <td>
                 <button
-                    className="btn btn-sm btn-warning"
+                    className="btn btn-sm text-white bg-[#4dbbe8]"
                     onClick={() => handleFeature(product._id)}
                     disabled={product.isFeatured || isMarkingFeatured}
                     >
-                    <FaStar className="mr-1" /> Feature
+                    <FaStar className="mr-1" /> {product?.isFeatured ? 'Featured' : 'Feature'}
                 </button>
               </td>
               <td>
                 <button
-                  className="btn btn-sm btn-success"
+                  className="btn btn-sm btn-success text-white"
                   onClick={() => handleAccept(product._id)}
                   disabled={product.status === 'accepted' || isUpdatingStatus}
                 >
@@ -137,7 +137,7 @@ const ReviewQueue = () => {
               </td>
               <td>
                 <button
-                  className="btn btn-sm btn-error"
+                  className="btn btn-sm btn-error text-white"
                   onClick={() => handleReject(product._id)}
                   disabled={product.status === 'rejected' || isUpdatingStatus}
                 >

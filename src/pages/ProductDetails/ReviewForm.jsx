@@ -35,10 +35,10 @@ const ReviewForm = ({ productId, refetchReviews }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mt-10 mx-auto">
     <form
       onSubmit={handleSubmit}
-      className="mt-10 p-6 rounded-xl shadow-xl bg-white space-y-4"
+      className="p-6 rounded-xl shadow-xl bg-base-100 border border-gray-300 space-y-4"
     >
       <h2 className="text-2xl text-center font-semibold text-gray-800">Send Your Review</h2>
 
@@ -95,7 +95,7 @@ const ReviewForm = ({ productId, refetchReviews }) => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary w-full">
+        <button type="submit" className="btn bg-[#4dbbe8] hover:bg-[#1a91c2] rounded-xl w-full">
           Submit Review
         </button>
       </div>

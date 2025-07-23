@@ -1,3 +1,5 @@
+import { FaRegEdit } from "react-icons/fa";
+import { IoTrashBin } from "react-icons/io5";
 import { Link } from "react-router";
 
 const ProductsRow = ({ product, handleDelete }) => {
@@ -7,8 +9,8 @@ const ProductsRow = ({ product, handleDelete }) => {
       <td>{product.votes}</td>
       <td>
         <span className={`badge 
-          ${product.status === 'Accepted' ? 'badge-success' :
-            product.status === 'Rejected' ? 'badge-error' :
+          ${product.status === 'accepted' ? 'badge-success' :
+            product.status === 'rejected' ? 'badge-error' :
             'badge-warning'}`}>
           {product.status || 'Pending'}
         </span>
@@ -16,15 +18,17 @@ const ProductsRow = ({ product, handleDelete }) => {
       <td className="flex gap-2 justify-center">
         <Link
           to={`/dashboard/updateProduct/${product._id}`}
-          className="btn btn-sm btn-info text-white"
+          className="btn flex btn-sm rounded-xl text-white bg-[#4dbbe8]"
         >
-          Update
+          <span>Update</span>
+          <span><FaRegEdit /></span>
         </Link>
         <button
           onClick={() => handleDelete(product._id)}
-          className="btn btn-sm btn-error text-white"
+          className="btn flex btn-sm rounded-xl text-white bg-[#4dbbe8]"
         >
-          Delete
+          <span>Delete</span>
+          <span><IoTrashBin /></span>
         </button>
       </td>
     </tr>

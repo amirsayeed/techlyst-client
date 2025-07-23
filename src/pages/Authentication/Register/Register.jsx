@@ -110,7 +110,7 @@ const Register = () => {
                 <p className="my-1 text-sm text-center dark:text-gray-600">Already have an account?
                 <Link to='/login' className="hover:underline text-blue-400"> Login</Link>
                 </p>
-                <button type='submit' className="btn btn-primary w-full text-white rounded-md">Register</button>
+                <button type='submit' className="btn w-full bg-[#4dbbe8] text-white rounded-md">Register</button>
             </form>
             <SocialLogin/>
             

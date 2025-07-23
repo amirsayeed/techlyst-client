@@ -68,7 +68,7 @@ const ManageUsers = () => {
               <td className="capitalize">{user.role || 'user'}</td>
               <td>
                 <button
-                  className="btn btn-sm btn-info"
+                  className="btn btn-sm text-white bg-[#4dbbe8]"
                   disabled={user.role === 'moderator' || isUpdating}
                   onClick={() => handleMakeRole(user._id, 'moderator')}
                 >

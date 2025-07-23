@@ -21,7 +21,7 @@ const TrendingProducts = () => {
   }
 
   return (
-    <div className="my-10 px-1">
+    <div className="my-12 px-1">
       <h2 className="text-3xl font-bold mb-8 text-center">Trending Products</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -33,7 +33,7 @@ const TrendingProducts = () => {
       <div className="mt-10 text-center">
         <button
           onClick={() => navigate('/products')}
-          className="bg-blue-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-700 transition"
+          className="bg-[#4dbbe8] hover:bg-[#1a91c2] text-white px-6 py-2 rounded-md font-semibold transition"
         >
           Show All Products
         </button>

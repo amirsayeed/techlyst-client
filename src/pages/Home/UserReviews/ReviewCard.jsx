@@ -6,7 +6,7 @@ const ReviewCard = ({ review }) => {
 
   return (
     <Link to={`/products/${productId}`}>
-        <div className="card bg-base-200 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-3">
+        <div className="card bg-base-100 rounded-xl border border-gray-300 shadow-xl hover:shadow-2xl transition-all duration-300 p-3">
             <div className="card-body p-4">
                 <div className="flex justify-between items-start">
                 <div className="flex items-center gap-3">

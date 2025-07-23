@@ -18,7 +18,7 @@ const UserReviews = () => {
   };
 
   return (
-    <div className="my-10">
+    <div className="my-12">
       <div className="px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
           What People Are Saying

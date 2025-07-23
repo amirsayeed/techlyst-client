@@ -8,7 +8,7 @@ const Reviews = ({ reviews, isLoading }) => {
       <h2 className="text-xl font-semibold">Reviews</h2>
       {reviews.length === 0 && <p>No reviews yet.</p>}
       {reviews.map((review, idx) => (
-        <div key={idx} className="p-5 bg-base-200 rounded-xl shadow">
+        <div key={idx} className="p-5 bg-base-100 rounded-xl shadow-xl border border-gray-200">
             <div className="flex items-start gap-2">
                 <img
                 src={review.reviewerImage}

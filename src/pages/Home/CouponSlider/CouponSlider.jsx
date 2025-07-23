@@ -37,10 +37,10 @@ const CouponSlider = () => {
       >
         {coupons.map((coupon) => (
           <SwiperSlide key={coupon._id}>
-            <div className="bg-base-200 text-center rounded-2xl p-8 shadow-md max-w-xl mx-auto mt-4">
+            <div className="bg-base-100 border border-gray-400 rounded-xl shadow-xl hover:shadow-2xl transition text-center p-10 max-w-2xl mx-auto mt-4">
               <h3 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
                 <FaTags />
-                Coupon Code: <span className="text-blue-500">{coupon.code}</span>
+                Coupon Code: <span className="text-[#1a91c2]">{coupon.code}</span>
               </h3>
               <p className="mb-1 flex font-medium items-center justify-center gap-2">
                 <FaMoneyBillWave />

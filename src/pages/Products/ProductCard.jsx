@@ -35,18 +35,18 @@ const ProductCard = ({ product, refetch }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-lg border border-gray-200 rounded-xl hover:shadow-xl transition p-5">
+    <div className="card bg-base-100 shadow-xl border border-gray-300 rounded-xl hover:shadow-xl transition p-5">
       <figure>
         <img
           src={product.productImageUrl}
           alt={product.productName}
-          className="w-full h-[200px]"
+          className="w-full rounded-xl h-[200px]"
         />
       </figure>
 
-      <div className="mt-3 space-y-4">
+      <div className="mt-4 space-y-4">
         <h3
-          className="text-center text-xl font-bold cursor-pointer hover:text-blue-600"
+          className="text-center text-xl font-bold cursor-pointer hover:text-[#1a91c2]"
           onClick={() => navigate(`/products/${product._id}`)}
         >
           {product.productName}
@@ -56,21 +56,21 @@ const ProductCard = ({ product, refetch }) => {
           {product.tags?.map(tag => (
             <span
               key={tag}
-              className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full"
+              className="bg-[#d4e7ee] font-normal text-[#1891c2] px-2 py-1 rounded-full"
             >
               #{tag}
             </span>
           ))}
         </div>
 
-        <div className="card-actions mt-3">
+        <div className="card-actions mt-4">
           <button
             disabled={isOwner || hasVoted}
             onClick={handleUpvote}
             className={`w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-white font-medium transition ${
               isOwner || hasVoted
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-700'
+                : 'bg-[#4dbbe8] hover:bg-[#1a91c2]'
             }`}
           >
             <FaArrowUp /> {product.votes || 0} Upvotes

@@ -17,7 +17,7 @@ const CouponCard = ({ coupon, onDelete, onUpdate }) => {
   return (
     <div className="card w-full bg-base-100 shadow-2xl rounded-xl">
       <div className="card-body space-y-2">
-        <h2 className="card-title text-xl font-bold text-primary">{code}</h2>
+        <h2 className="card-title text-xl font-bold text-[#4dbbe8]">{code}</h2>
         <p className="text-sm text-gray-500">
           <span className="font-medium">Expires on:</span>{" "}
           {new Date(expiryDate).toLocaleDateString()}

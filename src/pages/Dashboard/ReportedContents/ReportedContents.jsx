@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import Loading from '../../../components/Shared/Loading/Loading';
+import { IoTrashBin } from "react-icons/io5";
+import { FcViewDetails } from 'react-icons/fc';
 
 const ReportedContents = () => {
   const axiosSecure = useAxiosSecure();
@@ -72,16 +74,18 @@ const ReportedContents = () => {
                   <td>
                     <button
                       onClick={() => navigate(`/products/${product._id}`)}
-                      className="btn btn-sm btn-primary"
+                      className="btn flex btn-md rounded-xl text-white bg-[#4dbbe8]"
                     >
-                      View Details
+                      <span>View Details</span>
+                      <span><FcViewDetails /></span>
                     </button></td>
                   <td>
                     <button
                       onClick={() => handleDelete(product._id)}
-                      className="btn btn-sm btn-error"
+                      className="btn flex btn-md rounded-xl text-white bg-[#4dbbe8]"
                     >
-                      Delete
+                      <span>Delete</span>
+                      <span><IoTrashBin /></span>
                     </button>
                   </td>
                 </tr>

@@ -9,7 +9,7 @@ const UserDashboard = () => {
             </p>
 
             <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
+                <div className="bg-base-100 rounded-xl shadow-xl border border-gray-300 p-5 hover:shadow-2xl transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaUserCircle className="text-2xl" />
                         <h3 className="text-lg font-semibold">My Profile</h3>
@@ -19,7 +19,7 @@ const UserDashboard = () => {
                     </p>
                 </div>
 
-                <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
+                <div className="bg-base-100 rounded-xl shadow-xl border border-gray-300 p-5 hover:shadow-2xl transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaPlusCircle className="text-2xl" />
                         <h3 className="text-lg font-semibold">Add Product</h3>
@@ -29,7 +29,7 @@ const UserDashboard = () => {
                     </p>
                 </div>
 
-                <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
+                <div className="bg-base-100 rounded-xl shadow-xl border border-gray-300 p-5 hover:shadow-2xl transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaThList className="text-2xl" />
                         <h3 className="text-lg font-semibold">My Products</h3>
