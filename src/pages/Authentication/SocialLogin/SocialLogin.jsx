@@ -10,8 +10,8 @@ const SocialLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const axiosInstance = useAxios();
-    const handleGoogleLogin = () =>{
-        googleSignIn()
+    const handleGoogleLogin = async () =>{
+       await googleSignIn()
         .then(async(result) => {
             const user = result.user;
             // user update in database
@@ -27,6 +27,7 @@ const SocialLogin = () => {
             console.log(userRes.data);
 
             setUser(result.user);
+
             toast.success('Login successful');
             navigate(`${location?.state ? location.state : '/'}`);
         })

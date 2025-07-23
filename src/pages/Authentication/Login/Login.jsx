@@ -11,12 +11,13 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
         //console.log(data);
-        signIn(data.email, data.password)
+       await signIn(data.email, data.password)
         .then(result => {
             console.log(result.user);
             setUser(result.user);
+
             toast.success('Login successful');
             navigate(`${location?.state ? location.state : '/'}`);
         })

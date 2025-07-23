@@ -4,18 +4,22 @@ import TechlystLogo from '../TechlystLogo/TechlystLogo';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { FaUserCircle } from 'react-icons/fa';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Navbar = () => {
     const {user,logOut} = useAuth();
-    
-    const handleLogOut = () =>{
-        logOut().then(()=>{
+    const queryClient = useQueryClient();
+
+    const handleLogOut = async () => {
+        await logOut().then(() => {
+            queryClient.clear();
             toast.success('Successfully logged out');
         })
-        .catch(error=>{
+        .catch(error => {
             toast.error(error.message);
-        })
-    }
+        });
+    };
+
 
     const links = <>
                     <li><NavLink to='/'>Home</NavLink></li>

@@ -13,6 +13,8 @@ const useUserRole = () => {
       const res = await axiosSecure.get(`/users/${user.email}/role`);
       return res.data.role;
     },
+    staleTime: 0,
+    keepPreviousData: false
   });
 
   return { role, roleLoading: authLoading || roleLoading, refetch };

@@ -12,7 +12,7 @@ const UserDashboard = () => {
                 <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaUserCircle className="text-2xl" />
-                        <h3 className="text-lg font-bold">My Profile</h3>
+                        <h3 className="text-lg font-semibold">My Profile</h3>
                     </div>
                     <p className="text-sm font-normal text-justify">
                         View and update your personal info, apply a coupon, and subscribe to unlock premium features.
@@ -22,7 +22,7 @@ const UserDashboard = () => {
                 <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaPlusCircle className="text-2xl" />
-                        <h3 className="text-lg font-bold">Add Product</h3>
+                        <h3 className="text-lg font-semibold">Add Product</h3>
                     </div>
                     <p className="text-sm font-normal text-justify">
                         Share your latest tech products with the community by submitting them through a simple form.
@@ -32,7 +32,7 @@ const UserDashboard = () => {
                 <div className="bg-base-200 rounded-xl shadow-md p-5 hover:shadow-md transition">
                     <div className="flex items-center gap-3 mb-3">
                         <FaThList className="text-2xl" />
-                        <h3 className="text-lg font-bold">My Products</h3>
+                        <h3 className="text-lg font-semibold">My Products</h3>
                     </div>
                     <p className="text-sm font-normal text-justify">
                         Manage all the products you’ve added, including their approval status.
