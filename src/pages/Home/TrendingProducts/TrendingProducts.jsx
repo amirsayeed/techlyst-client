@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
 import useAxios from '../../../hooks/useAxios';
 import ProductCard from '../../Products/ProductCard';
+import { FaArrowRight } from 'react-icons/fa6';
 
 
 const TrendingProducts = () => {
@@ -35,7 +36,10 @@ const TrendingProducts = () => {
           onClick={() => navigate('/products')}
           className="bg-[#4dbbe8] hover:bg-[#1a91c2] text-white px-6 py-2 rounded-md font-semibold transition"
         >
-          Show All Products
+          <p className='flex items-center gap-1'>
+            <span>Show All Products</span>
+            <span><FaArrowRight /></span>
+          </p>
         </button>
       </div>
     </div>

@@ -7,6 +7,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import useAxios from '../../../hooks/useAxios';
+import { FaUserPlus } from 'react-icons/fa6';
 
 
 const Register = () => {
@@ -112,7 +113,10 @@ const Register = () => {
                 <p className="my-1 text-sm text-center dark:text-gray-600">Already have an account?
                 <Link to='/login' className="hover:underline text-blue-400"> Login</Link>
                 </p>
-                <button type='submit' className="btn w-full bg-[#4dbbe8] text-white rounded-md">Register</button>
+                <button type='submit' className="btn flex w-full bg-[#4dbbe8] text-white rounded-md">
+                    <span>Register</span>
+                    <span><FaUserPlus size={15} /></span>
+                </button>
             </form>
             <SocialLogin/>
             

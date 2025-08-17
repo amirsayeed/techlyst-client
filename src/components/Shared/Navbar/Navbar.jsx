@@ -4,6 +4,7 @@ import TechlystLogo from '../TechlystLogo/TechlystLogo';
 import useAuth from '../../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { useQueryClient } from '@tanstack/react-query';
+import { IoMdLogIn } from "react-icons/io";
 
 const Navbar = () => {
     const {user,logOut} = useAuth();
@@ -81,7 +82,10 @@ const Navbar = () => {
                         </div>
                     ) :
                     (<div>
-                        <Link to='/login' className="btn text-white bg-[#4dbbe8] p-2 text-sm rounded-md">Login</Link>
+                        <Link to='/login' className="btn flex text-white bg-[#4dbbe8] p-2 text-sm rounded-md">
+                        <span>Login</span>
+                        <span><IoMdLogIn size={20} /></span>
+                        </Link>
                     </div>)}
             </div>
             </div>
