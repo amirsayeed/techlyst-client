@@ -5,11 +5,13 @@ import TrendingProducts from '../TrendingProducts/TrendingProducts';
 import CouponSlider from '../CouponSlider/CouponSlider';
 import HowItWorks from '../HowItWorks/HowItWorks';
 import UserReviews from '../UserReviews/UserReviews';
+import AboutTechLyst from '../AboutTechlyst/AboutTechlyst';
 
 const Home = () => {
     return (
         <div>
             <Banner/>
+            <AboutTechLyst/>
             <FeaturedProducts/>
             <TrendingProducts/>
             <CouponSlider/>
