@@ -41,7 +41,9 @@ const Statistics = () => {
   ];
 
   return (
-    <div className="my-10 bg-base-100 rounded-lg overflow-x-auto">
+    <div>
+      <title>TechLyst | Statisitics</title>
+      <div className="my-10 bg-base-100 rounded-lg overflow-x-auto">
       <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-center">
         Statistics
       </h2>
@@ -75,6 +77,7 @@ const Statistics = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
+    </div>
     </div>
   );
 };

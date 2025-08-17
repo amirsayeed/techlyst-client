@@ -113,7 +113,9 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="my-10">
+    <div>
+      <title>TechLyst | Add Product</title>
+      <div className="my-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="fieldset max-w-3xl mx-auto p-10 bg-base-100 shadow-xl border border-[#4dbbe8] rounded-xl"
@@ -226,6 +228,7 @@ const AddProduct = () => {
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -92,7 +92,9 @@ const ReviewQueue = () => {
   };
 
   return (
-    <div className="p-4 overflow-x-auto">
+    <div>
+      <title>TechLyst | Product Review Queue</title>
+      <div className="p-4 overflow-x-auto">
       <h2 className="text-2xl font-bold mb-4">Product Review Queue</h2>
       <table className="table w-full">
         <thead>
@@ -148,6 +150,7 @@ const ReviewQueue = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

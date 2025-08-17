@@ -46,7 +46,9 @@ const ManageUsers = () => {
   }
 
   return (
-    <div className="overflow-x-auto w-full p-4">
+    <div>
+      <title>TechLyst | Manage Users</title>
+      <div className="overflow-x-auto w-full p-4">
       <h2 className="text-2xl font-bold mb-4">Manage Users</h2>
       <table className="table w-full">
         <thead>
@@ -88,6 +90,7 @@ const ManageUsers = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

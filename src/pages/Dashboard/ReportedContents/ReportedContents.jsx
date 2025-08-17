@@ -50,7 +50,9 @@ const ReportedContents = () => {
   };
 
   return (
-    <div className="p-4">
+    <div>
+      <title>TechLyst | Reported Products</title>
+      <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">Reported Products</h2>
 
       {reportedProducts.length === 0 ? (
@@ -74,7 +76,7 @@ const ReportedContents = () => {
                   <td>
                     <button
                       onClick={() => navigate(`/products/${product._id}`)}
-                      className="btn flex btn-md rounded-xl text-white bg-[#4dbbe8]"
+                      className="btn btn-sm flex rounded-xl text-white bg-[#4dbbe8]"
                     >
                       <span>View Details</span>
                       <span><FcViewDetails /></span>
@@ -82,7 +84,7 @@ const ReportedContents = () => {
                   <td>
                     <button
                       onClick={() => handleDelete(product._id)}
-                      className="btn flex btn-md rounded-xl text-white bg-[#4dbbe8]"
+                      className="btn flex btn-sm rounded-xl text-white bg-[#4dbbe8]"
                     >
                       <span>Delete</span>
                       <span><IoTrashBin /></span>
@@ -94,6 +96,7 @@ const ReportedContents = () => {
           </table>
         </div>
       )}
+    </div>
     </div>
   );
 };

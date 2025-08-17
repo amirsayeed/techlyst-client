@@ -80,8 +80,10 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className="my-10">
-      <form onSubmit={handleSubmit(onSubmit)} className="fieldset max-w-3xl mx-auto p-10 bg-base-200 rounded-lg">
+    <div>
+      <title>TechLyst | Update Product</title>
+      <div className="my-10">
+      <form onSubmit={handleSubmit(onSubmit)} className="fieldset max-w-3xl mx-auto p-10 bg-base-100 shadow-xl border border-[#4dbbe8] rounded-xl">
         <h2 className="text-3xl font-bold mb-6 text-center">Update Product</h2>
 
         <div className="form-control mb-4 w-full">
@@ -192,11 +194,12 @@ const UpdateProduct = () => {
         </div>
 
         <div className="text-center">
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn text-white bg-[#4dbbe8] w-full">
             Update Product
           </button>
         </div>
       </form>
+    </div>
     </div>
   );
 };

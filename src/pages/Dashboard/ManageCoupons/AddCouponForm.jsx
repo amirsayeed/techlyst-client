@@ -42,7 +42,7 @@ const AddCouponForm = ({ refetch }) => {
     <div className="mt-10">
       <h2 className="text-xl font-bold mb-4">Add New Coupon</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md border-2 border-[#4dbbe8] p-5 rounded-lg">
         <div>
           <label className="label">Coupon Code</label>
           <input

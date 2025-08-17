@@ -53,7 +53,9 @@ const Register = () => {
     }
     
     return (
-        <div className='my-20'>
+        <div>
+            <title>TechLyst | Register</title>
+            <div className='my-20'>
             <div className="flex flex-col mx-auto max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-100 dark:text-gray-800">
             <h1 className="my-3 text-4xl font-bold text-center">Register</h1>
                 
@@ -115,6 +117,7 @@ const Register = () => {
             <SocialLogin/>
             
             </div>
+        </div>
         </div>
     );
 };

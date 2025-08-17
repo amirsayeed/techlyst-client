@@ -34,7 +34,9 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div>
+      <title>TechLyst | My Profile</title>
+      <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col justify-center max-w-xs mx-auto p-6 shadow-lg rounded-xl sm:px-12 bg-base-200 text-base-content">
         <img
           src={user?.photoURL || 'https://img.icons8.com/ios-glyphs/30/user--v1.png'}
@@ -66,6 +68,7 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
 
   );

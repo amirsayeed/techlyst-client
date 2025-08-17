@@ -28,8 +28,8 @@ const EditCoupon = ({ coupon, onClose, onUpdate }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-white bg-opacity-10 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg w-full max-w-md space-y-4">
+    <div className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-base-100 border-2 border-[#4dbbe8] p-6 rounded-lg w-full max-w-md space-y-4">
         <h2 className="text-lg font-semibold">Edit Coupon</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -70,7 +70,7 @@ const EditCoupon = ({ coupon, onClose, onUpdate }) => {
             <button type="button" className="btn btn-outline" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn text-white bg-[#4dbbe8]">
               Update
             </button>
           </div>
