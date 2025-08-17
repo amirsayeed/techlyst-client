@@ -1,7 +1,7 @@
 import React from 'react';
 import TechlystLogo from '../components/Shared/TechlystLogo/TechlystLogo';
 import { NavLink, Outlet } from 'react-router';
-import { FaChartBar, FaClipboardCheck, FaExclamationTriangle, FaPlusCircle, FaTags, FaThList, FaUser, FaUsersCog } from 'react-icons/fa';
+import { FaChartBar, FaClipboardCheck, FaExclamationTriangle, FaHome, FaPlusCircle, FaTags, FaThList, FaUser, FaUsersCog } from 'react-icons/fa';
 import useUserRole from '../hooks/useUserRole';
 
 const DashboardLayout = () => {
@@ -40,9 +40,15 @@ const DashboardLayout = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full gap-2 w-80 p-4 font-medium">
+                <ul className="menu bg-base-200 text-base-content min-h-full gap-3 w-72 p-4 font-medium">
                     {/* Sidebar content here */}
                     <TechlystLogo/>
+
+                    <li>
+                        <NavLink to="/dashboard" end>
+                            <FaHome className="inline mr-2" /> Dashboard Home
+                        </NavLink>
+                    </li>
                     
                     {/* user links */}
                     {!roleLoading && role === 'user' && (
