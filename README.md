@@ -14,6 +14,13 @@ TechLyst is a MERN Stack web application where users can explore tech products l
 
 🔗 [https://techlyst-server.vercel.app/](https://techlyst-server.vercel.app/)
 
+## 🧑‍💻 Test Credentials
+
+Use the following credentials to log in as an **Admin**:
+
+- **Email:** `admin1@techlyst.com`
+- **Password:** `Admin1`
+
 ## 🚀 Key Features
 
 - Firebase authentication with email/password and Google sign-in
