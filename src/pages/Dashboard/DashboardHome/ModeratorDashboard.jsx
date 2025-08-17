@@ -3,7 +3,9 @@ import { FaExclamationTriangle, FaClipboardCheck } from 'react-icons/fa';
 
 const ModeratorDashboard = () => {
     return (
-        <div className="p-6">
+        <div>
+            <title>TechLyst | Dashboard</title>
+            <div className="p-6">
             <h2 className="text-2xl font-bold mb-4">Welcome to Moderator Dashboard</h2>
             <p className="text-base mb-6">
                 From here, you can manage the product review process and handle reported contents to keep the platform clean.
@@ -30,6 +32,7 @@ const ModeratorDashboard = () => {
                     </p>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

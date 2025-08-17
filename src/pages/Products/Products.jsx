@@ -28,7 +28,9 @@ const Products = () => {
   const totalPages = data?.totalPages || 0;
 
   return (
-    <div className="my-10 px-1">
+    <div>
+      <title>TechLyst | All Products</title>
+      <div className="my-10 px-1">
       <h2 className="text-3xl font-bold mb-6 text-center">All Products</h2>
 
       <SearchBar search={search} setSearch={setSearch} setPage={setPage}/>
@@ -52,6 +54,7 @@ const Products = () => {
           totalPages={totalPages}/>
       </>
       )}
+    </div>
     </div>
   );
 };

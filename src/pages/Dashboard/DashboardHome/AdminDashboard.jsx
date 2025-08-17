@@ -2,7 +2,9 @@ import { FaChartBar, FaUsersCog, FaTags } from 'react-icons/fa';
 
 const AdminDashboard = () => {
   return (
-    <div className="p-6">
+    <div>
+      <title>TechLyst | Dashboard</title>
+      <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">Welcome to Admin Dashboard</h2>
       <p className="text-base mb-6">
         Oversee platform statistics, user roles, and coupon management from here.
@@ -39,6 +41,7 @@ const AdminDashboard = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };

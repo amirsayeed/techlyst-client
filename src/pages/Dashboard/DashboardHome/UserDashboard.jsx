@@ -2,7 +2,9 @@ import { FaUserCircle, FaPlusCircle, FaThList } from 'react-icons/fa';
 
 const UserDashboard = () => {
     return (
-        <div className="p-6">
+        <div>
+            <title>TechLyst | Dashboard</title>
+            <div className="p-6">
             <h2 className="text-2xl font-bold mb-4">Welcome to Your Dashboard</h2>
             <p className="text-base mb-6">
                 From here, you can manage your membership, add new tech products, and view your submissions.
@@ -39,6 +41,7 @@ const UserDashboard = () => {
                     </p>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
