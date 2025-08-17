@@ -19,7 +19,7 @@ const UserReviews = () => {
 
   return (
     <div className="my-12">
-      <div className="px-4">
+      <div className="px-2 md:px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
           What People Are Saying
         </h2>

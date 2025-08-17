@@ -25,7 +25,8 @@ const slides = [
 
 const Banner = () => {
   return (
-    <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+    <div className='px-2 md:px-4'>
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
       {slides.map((slide) => (
         <div key={slide.id} className="relative">
           <img
@@ -44,6 +45,7 @@ const Banner = () => {
         </div>
       ))}
     </Carousel>
+    </div>
   );
 };
 

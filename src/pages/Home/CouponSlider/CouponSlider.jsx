@@ -22,7 +22,7 @@ const CouponSlider = () => {
   if (isLoading) return <Loading/>;
 
   return (
-    <div className="my-10 space-y-4">
+    <div className="my-12 space-y-4 px-2 md:px-4">
       <h2 className="text-3xl font-bold text-center">Grab Our Latest Coupons!</h2>
       <p className="text-base font-medium text-center">
           Unlock premium perks for less — use a coupon at checkout.
@@ -38,7 +38,7 @@ const CouponSlider = () => {
         {coupons.map((coupon) => (
           <SwiperSlide key={coupon._id}>
             <div className="bg-base-100 border border-gray-400 rounded-xl shadow-xl hover:shadow-2xl transition text-center p-10 max-w-2xl mx-auto mt-4">
-              <h3 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
+              <h3 className="text-xl font-bold mb-2 flex flex-col md:flex-row items-center justify-center gap-2">
                 <FaTags />
                 Coupon Code: <span className="text-[#1a91c2]">{coupon.code}</span>
               </h3>

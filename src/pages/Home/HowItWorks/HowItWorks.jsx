@@ -30,8 +30,8 @@ const steps = [
 
 const HowItWorks = () => {
     return (
-    <div className="my-12 bg-base-100">
-      <div className="px-4 text-center">
+    <div className="my-12 bg-base-100 px-2 md:px-4">
+      <div className="text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 text-neutral">
           How Techlyst Works
         </h2>
